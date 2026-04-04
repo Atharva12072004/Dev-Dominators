@@ -184,4 +184,4 @@ adb reverse tcp:19001 tcp:19001
 
 ---
 
-*Built with ❤️ by Dev Dominators*
+*Built by Dev Dominators*

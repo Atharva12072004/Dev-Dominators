@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=380">
+  <title>CYBERSHIELD</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrapper">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="popup-logo">
+        <img src="../assets/logo.svg" alt="CYBERSHIELD" width="28" height="28">
+        <div class="popup-brand">
+          <span class="popup-title">CYBERSHIELD</span>
+          <span class="popup-status" id="connection-status">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="status-text">Checking…</span>
+          </span>
+        </div>
+      </div>
+      <div class="popup-header-actions">
+        <button class="icon-btn" id="btn-dashboard" title="Dashboard">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-options" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Current Tab Section -->
+    <section class="popup-section" id="current-tab-section">
+      <div class="section-label">Current Tab</div>
+      <div class="current-tab-card" id="current-tab-card">
+        <div class="tab-url" id="tab-url">—</div>
+        <div class="tab-verdict" id="tab-verdict"></div>
+      </div>
+      <button class="btn-primary" id="btn-scan-page">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Scan This Page
+      </button>
+    </section>
+
+    <!-- Manual Analyze Tabs -->
+    <section class="popup-section">
+      <div class="section-label">Manual Analyze</div>
+      <div class="analyze-tabs">
+        <button class="analyze-tab active" data-tab="url">URL</button>
+        <button class="analyze-tab" data-tab="email">Email</button>
+        <button class="analyze-tab" data-tab="chat">Chat</button>
+        <button class="analyze-tab" data-tab="attachment">File</button>
+        <button class="analyze-tab" data-tab="sandbox">Sandbox</button>
+      </div>
+
+      <!-- URL Tab -->
+      <div class="analyze-panel active" id="panel-url">
+        <textarea id="input-url" placeholder="Enter URL(s), one per line…" rows="3"></textarea>
+        <button class="btn-primary btn-analyze" id="btn-analyze-url">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Analyze
+        </button>
+      </div>
+
+      <!-- Email Tab -->
+      <div class="analyze-panel" id="panel-email">
+        <input type="text" id="input-email-subject" placeholder="Subject (optional)">
+        <textarea id="input-email-content" placeholder="Paste email content…" rows="3"></textarea>
+        <div class="file-upload-row">
+          <label class="file-upload-label" for="file-upload-email">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+            Attach files (optional)
+          </label>
+          <input type="file" id="file-upload-email" class="file-upload-input" multiple>
+          <span class="file-upload-info" id="file-upload-email-info"></span>
+        </div>
+        <button class="btn-primary btn-analyze" id="btn-analyze-email">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Analyze Email
+        </button>
+      </div>
+
+      <!-- Chat Tab -->
+      <div class="analyze-panel" id="panel-chat">
+        <input type="text" id="input-chat-sender" placeholder="Sender (optional)">
+        <textarea id="input-chat-content" placeholder="Paste chat message…" rows="3"></textarea>
+        <div class="file-upload-row">
+          <label class="file-upload-label" for="file-upload-chat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+            Attach files (optional)
+          </label>
+          <input type="file" id="file-upload-chat" class="file-upload-input" multiple>
+          <span class="file-upload-info" id="file-upload-chat-info"></span>
+        </div>
+        <button class="btn-primary btn-analyze" id="btn-analyze-chat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Analyze Chat
+        </button>
+      </div>
+
+      <!-- Attachment Tab -->
+      <div class="analyze-panel" id="panel-attachment">
+        <div class="file-upload-zone" id="file-drop-zone">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--pg-text-muted)" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <div class="file-drop-text">Drop a file here or click to select</div>
+          <div class="file-drop-hint">Max 15MB · Any file type</div>
+          <input type="file" id="file-upload-attachment" class="file-upload-input">
+        </div>
+        <div class="file-selected-info" id="attachment-file-info"></div>
+        <input type="text" id="input-attachment-label" placeholder="Context label (optional)">
+        <button class="btn-primary btn-analyze" id="btn-analyze-attachment" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Analyze File
+        </button>
+      </div>
+
+      <!-- Sandbox Tab -->
+      <div class="analyze-panel" id="panel-sandbox">
+        <div class="sandbox-note">
+          Run behavioral analysis on a direct URL or file. This uses the same backend sandbox flow and answers whether the artifact showed network, file, or phishing-style behavior.
+        </div>
+        <div class="sandbox-mode-toggle">
+          <button class="sandbox-mode-btn active" data-mode="url" id="btn-sandbox-mode-url">Sandbox URL</button>
+          <button class="sandbox-mode-btn" data-mode="file" id="btn-sandbox-mode-file">Sandbox File</button>
+        </div>
+
+        <div class="sandbox-fields active" id="sandbox-fields-url">
+          <textarea id="input-sandbox-url" placeholder="Enter one URL or domain for sandbox analysis…" rows="3"></textarea>
+        </div>
+
+        <div class="sandbox-fields" id="sandbox-fields-file">
+          <div class="file-upload-zone sandbox-upload-zone" id="sandbox-drop-zone">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--pg-text-muted)" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div class="file-drop-text">Drop a file here or click to select</div>
+            <div class="file-drop-hint">Runs attachment scan + sandbox</div>
+            <input type="file" id="file-upload-sandbox" class="file-upload-input">
+          </div>
+          <div class="file-selected-info" id="sandbox-file-info"></div>
+          <input type="text" id="input-sandbox-label" placeholder="Context label (optional)">
+        </div>
+
+        <button class="btn-primary btn-analyze" id="btn-run-sandbox">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Run Sandbox
+        </button>
+      </div>
+
+      <!-- Result area -->
+      <div class="analyze-result" id="analyze-result"></div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="popup-section">
+      <div class="section-label">Recent Activity</div>
+      <div class="recent-feed" id="recent-feed">
+        <div class="pg-empty">
+          <div class="pg-empty-icon">📭</div>
+          <div class="pg-empty-msg">No recent scans</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toggles -->
+    <section class="popup-section popup-toggles">
+      <div class="section-label">Monitoring</div>
+      <label class="toggle-row">
+        <span>Auto Monitoring</span>
+        <input type="checkbox" id="toggle-auto" class="toggle-input">
+        <span class="toggle-slider"></span>
+      </label>
+      <label class="toggle-row">
+        <span>Browser Links</span>
+        <input type="checkbox" id="toggle-links" class="toggle-input">
+        <span class="toggle-slider"></span>
+      </label>
+      <label class="toggle-row">
+        <span>Email Monitor</span>
+        <input type="checkbox" id="toggle-email" class="toggle-input">
+        <span class="toggle-slider"></span>
+      </label>
+      <label class="toggle-row">
+        <span>WhatsApp Monitor</span>
+        <input type="checkbox" id="toggle-whatsapp" class="toggle-input">
+        <span class="toggle-slider"></span>
+      </label>
+      <label class="toggle-row">
+        <span>Notifications</span>
+        <input type="checkbox" id="toggle-notif" class="toggle-input">
+        <span class="toggle-slider"></span>
+      </label>
+    </section>
+  </div>
+
+  <script src="../shared/api.js"></script>
+  <script src="../shared/storage.js"></script>
+  <script src="../shared/ui.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

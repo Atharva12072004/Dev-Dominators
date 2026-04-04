@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <linearGradient id="bgFill" x1="35" y1="26" x2="220" y2="234" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0e2a89"/>
+      <stop offset="0.55" stop-color="#123cb1"/>
+      <stop offset="1" stop-color="#08154c"/>
+    </linearGradient>
+    <linearGradient id="edgeGlow" x1="33" y1="18" x2="223" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6efbff"/>
+      <stop offset="0.45" stop-color="#2ec9ff"/>
+      <stop offset="1" stop-color="#29f6ff"/>
+    </linearGradient>
+    <linearGradient id="innerGlow" x1="57" y1="46" x2="194" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8ffcff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#38c6ff" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="traceStroke" x1="70" y1="56" x2="184" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8ffcff"/>
+      <stop offset="1" stop-color="#45d0ff"/>
+    </linearGradient>
+    <filter id="outerGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="shieldClip">
+      <path d="M128 19 219 54v64c0 57-36 100-91 119-55-19-91-62-91-119V54z"/>
+    </clipPath>
+  </defs>
+
+  <g filter="url(#outerGlow)">
+    <path d="M128 19 219 54v64c0 57-36 100-91 119-55-19-91-62-91-119V54z"
+          fill="url(#bgFill)"
+          stroke="url(#edgeGlow)"
+          stroke-width="8"
+          stroke-linejoin="round"/>
+  </g>
+
+  <path d="M128 31 207 60v57c0 49-31 86-79 103-48-17-79-54-79-103V60z"
+        fill="url(#innerGlow)"
+        fill-opacity="0.14"
+        stroke="rgba(164,244,255,0.65)"
+        stroke-width="2.4"
+        stroke-linejoin="round"/>
+
+  <g clip-path="url(#shieldClip)" stroke="url(#traceStroke)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#softGlow)">
+    <path d="M74 66V118l14 14v24"/>
+    <path d="M94 58v34l10 10v48"/>
+    <path d="M116 50v46l-12 12v28l16 16v22"/>
+    <path d="M138 48v38l14 14v52"/>
+    <path d="M160 58v26l-10 10v50l18 18"/>
+    <path d="M182 70v42l-16 16v30"/>
+    <path d="M66 146h22"/>
+    <path d="M88 132h20"/>
+    <path d="M108 110h18"/>
+    <path d="M130 122h22"/>
+    <path d="M152 100h18"/>
+    <path d="M166 142h22"/>
+    <circle cx="74" cy="66" r="3.4" fill="#8ffcff" stroke="none"/>
+    <circle cx="94" cy="58" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="116" cy="50" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="138" cy="48" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="160" cy="58" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="182" cy="70" r="3.4" fill="#8ffcff" stroke="none"/>
+    <circle cx="88" cy="156" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="104" cy="150" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="120" cy="174" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="152" cy="152" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="166" cy="162" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="184" cy="142" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="140" cy="106" r="3.2" fill="#8ffcff" stroke="none"/>
+    <circle cx="172" cy="100" r="3.2" fill="#8ffcff" stroke="none"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <text x="128" y="154" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="800" fill="#88fbff" letter-spacing="1.5">AI</text>
+  </g>
+</svg>

@@ -1,0 +1,95 @@
+{
+  "manifest_version": 3,
+  "name": "CYBERSHIELD",
+  "description": "CYBERSHIELD provides AI-powered real-time phishing detection for browser links, Gmail, Outlook Web, and WhatsApp Web.",
+  "version": "1.0.0",
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "webNavigation",
+    "notifications",
+    "scripting",
+    "alarms"
+  ],
+
+  "host_permissions": [
+    "<all_urls>",
+    "https://mail.google.com/*",
+    "https://outlook.live.com/*",
+    "https://outlook.office.com/*",
+    "https://web.whatsapp.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background/service_worker.js"
+  },
+
+  "action": {
+    "default_title": "CYBERSHIELD",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+
+  "options_page": "options/options.html",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office.com/*"
+      ],
+      "js": [
+        "content_scripts/email_monitor.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ],
+      "js": [
+        "content_scripts/whatsapp_monitor.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content_scripts/interceptor.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "warning/warning.html",
+        "warning/warning.css",
+        "warning/warning.js",
+        "assets/logo.svg"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

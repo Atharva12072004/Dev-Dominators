@@ -1,0 +1,256 @@
+/* ================================================================== */
+/*  PhishGuard AI — Warning Page Styles                                 */
+/* ================================================================== */
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: #0a0c10;
+  color: #e8eaed;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.warning-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(ellipse at top, rgba(239,68,68,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(15,17,23,1) 0%, #0a0c10 100%);
+}
+
+/* ---- Card ---- */
+.warning-card {
+  max-width: 520px;
+  width: 100%;
+  background: linear-gradient(160deg, #1e2230 0%, #181b23 50%, #151821 100%);
+  border: 1px solid rgba(239,68,68,0.15);
+  border-radius: 20px;
+  padding: 40px 36px;
+  text-align: center;
+  box-shadow:
+    0 0 60px rgba(239,68,68,0.06),
+    0 20px 60px rgba(0,0,0,0.4);
+  animation: cardAppear 0.5s ease;
+}
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Icon ---- */
+.warning-icon-wrap {
+  margin-bottom: 20px;
+}
+.warning-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(239,68,68,0.1);
+  color: #ef4444;
+  animation: iconPulse 2s ease infinite;
+}
+.warning-icon-wrap.suspicious .warning-icon {
+  background: rgba(245,158,11,0.1);
+  color: #f59e0b;
+}
+@keyframes iconPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.2); }
+  50% { box-shadow: 0 0 0 16px rgba(239,68,68,0); }
+}
+
+/* ---- Content ---- */
+.warning-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.warning-title.suspicious-title {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.warning-subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 24px;
+}
+
+/* ---- Verdict ---- */
+.warning-verdict {
+  margin-bottom: 20px;
+}
+.verdict-badge-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.risk-score-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+/* ---- URL ---- */
+.warning-url-wrap {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.warning-url-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+.warning-url {
+  font-size: 13px;
+  color: #9ca3af;
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+/* ---- Reason ---- */
+.warning-reason-wrap {
+  text-align: left;
+  margin-bottom: 16px;
+}
+.warning-reason-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+.warning-reason {
+  font-size: 13px;
+  color: #d1d5db;
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border-left: 3px solid rgba(239,68,68,0.4);
+}
+
+/* ---- Flags ---- */
+.warning-flags {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.warning-flag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 6px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+.warning-flag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+}
+
+/* ---- Actions ---- */
+.warning-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+.btn-safe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(34,197,94,0.25);
+}
+.btn-safe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(34,197,94,0.35);
+}
+.btn-safe:active { transform: translateY(0); }
+
+.btn-proceed {
+  width: 100%;
+  padding: 12px 24px;
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-proceed:hover {
+  background: rgba(255,255,255,0.04);
+  color: #9ca3af;
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* ---- Disclaimer ---- */
+.warning-disclaimer {
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* ---- Branding ---- */
+.warning-branding {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 12px;
+  color: #4b5563;
+}
+.warning-branding img { border-radius: 4px; opacity: 0.5; }

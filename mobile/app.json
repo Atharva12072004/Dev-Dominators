@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "CyberShield AI",
+    "slug": "cybershield-ai",
+    "scheme": "cybershieldai",
+    "version": "1.0.0",
+    "icon": "./assets/images/app-icon.png",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/images/splash-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#050816"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-dev-client",
+        {
+          "launchMode": "launcher"
+        }
+      ],
+      "expo-sqlite",
+      "expo-notifications",
+      "@react-native-google-signin/google-signin"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "permissions": [
+        "INTERNET",
+        "POST_NOTIFICATIONS",
+        "RECEIVE_SMS",
+        "READ_SMS",
+        "SYSTEM_ALERT_WINDOW",
+        "VIBRATE"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/app-icon.png",
+        "backgroundColor": "#050816"
+      },
+      "package": "com.anonymous.cybershieldai"
+    }
+  }
+}
